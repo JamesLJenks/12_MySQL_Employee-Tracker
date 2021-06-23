@@ -1,26 +1,5 @@
-const mysql = require('mysql');
+const connection = require('./config/connection.js')
 const inquirer = require('inquirer');
-require('dotenv').config();
-
-const connection = mysql.createConnection({
-  host: 'localhost',
-
-  // Your port; if not 3306
-  port: 3306,
-
-  // Your username
-  user: 'DB_USER',
-
-  // Be sure to update with your own MySQL password!
-  password: 'DB_PASSWORD',
-  database: 'DB_NAME',
-});
-
-
-connection.connect((err) => {
-  if (err) throw err;
-  runSearch();
-});
 
 // MAIN MENU
 const runSearch = () => {
@@ -111,14 +90,6 @@ const updateEmployeeRole = () => {
 const updateEmployeeManager = () => {
     
 }
-
-
-
-
-
-
-
-
 
 
 // const viewAllEmployees = () => {
