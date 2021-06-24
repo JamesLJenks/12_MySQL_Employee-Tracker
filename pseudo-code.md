@@ -15,6 +15,7 @@
 
     - "Add Employee"
         - "What is the employee's first name?"
+        - "What is the employee's last name?"
         - "What is the employee's role?"
             - Sales Lead
             - Salesperson
@@ -44,3 +45,9 @@
         - "Which employee's manager do you want to update?"
         - "Which employee do you want to set as manager for the selected employee?"
             - "Updated employee's manager"
+
+
+Classes and Constructors
+Class = Employee
+
+Need a foreign key to establish relationships between tables.
