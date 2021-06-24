@@ -10,6 +10,7 @@ const runSearch = () => {
       message: 'What would you like to do?',
       choices: [
         'View All Employees',
+        'View All Employees By Department',
         'View All Departments',
         'View All Employee Roles',
         'Add Employee',
@@ -22,6 +23,10 @@ const runSearch = () => {
       switch (answer.action) {
         case 'View All Employees':
           viewAllEmployees();
+          break;
+        
+        case 'View All Employees By Department':
+          viewEmployeesByDepartment();
           break;
 
         case 'View All Departments':
@@ -73,9 +78,17 @@ const viewAllEmployees = () => {
   })
 }
 
+const viewEmployeesByDepartment = () => {
+  connection.query("SELECT employee.first_name, employee.last_name, department.name AS Department FROM employee JOIN employee_role ON employee.role_id = employee_role.id JOIN department ON employee_role.department_id = department.id ORDER BY employee.id;", (err, res) => {
+    if (err) throw err
+    console.table(res);
+    runSearch();
+  })
+}
+
 // VIEW ALL EMPLOYEES BY DEPARTMENT
 const viewDepartment = () => {
-  connection.query("SELECT * FROM department", (err, res) => {
+  connection.query("SELECT name AS Departments FROM department", (err, res) => {
     if (err) throw err
     console.table(res);
     runSearch();
