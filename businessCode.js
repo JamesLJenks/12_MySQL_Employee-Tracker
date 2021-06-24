@@ -57,8 +57,16 @@ const runSearch = () => {
 
 
 // VIEW ALL EMPLOYEES
-const viewAllEmployees = () => { // Do this for all the views and change the table name
-  connection.query("SELECT * FROM employee", (err, res) => {
+// const viewAllEmployees = () => {
+//   connection.query("SELECT * FROM employee", (err, res) => {
+//     if (err) throw err
+//     console.table(res);
+//     runSearch();
+//   })
+// }
+
+const viewAllEmployees = () => {
+  connection.query("SELECT employee.id, employee.first_name, employee.last_name, employee_role.title, department.name AS Department, employee_role.salary, CONCAT(e.first_name, ' ' ,e.last_name) AS Manager FROM employee INNER JOIN employee_role on employee_role.id = employee.role_id INNER JOIN department on department.id = employee_role.department_id left join employee e on employee.manager_id = e.id;", (err, res) => {
     if (err) throw err
     console.table(res);
     runSearch();
