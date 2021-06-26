@@ -265,8 +265,6 @@ const updateEmployeeRole = () => {
     
 // }
 
-// runSearch();
-
 
 // //============= ADD EMPLOYEE ROLE ==========================//
 function addEmployeeRole() {
@@ -329,3 +327,5 @@ function addDepartment() {
         )
     })
   }
+
+  runSearch();
