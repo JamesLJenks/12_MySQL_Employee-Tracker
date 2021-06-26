@@ -2,6 +2,7 @@ const connection = require('./config/connection');
 const inquirer = require('inquirer');
 
 //========== APP RUN PROMPT ==========//
+
 const runSearch = () => {
   inquirer
     .prompt({
@@ -175,52 +176,9 @@ function addEmployee() {
       });
   });
 }
-// const addEmployee = () => {
-//   connection.query('SELECT * FROM employee_role', function (err, res) {
-//     if (err) throw err;
-//     inquirer.prompt([
-//       {
-//         name: "firstName",
-//         type: "input",
-//         message: "What is the employee's first name?"
-//       },
-//       {
-//         name: "lastName",
-//         type: "input",
-//         message: "What is the employee's last name?"
-//       },
-//       {
-//         name: "roleId",
-//         type: "rawlist",
-//         choices: res.map(employee_role => employee_role.title),
-//         message: "Select a role for the employee."
-//       },
-//       {
-//         name: "managerName",
-//         type: "rawlist",
-//         message: "What is the name of the employee's manager?",
-//         choices: selectManager()
-//       }
-//     ]).then(function (answers) {
-//       const selectedRole = res.find(employee_role => employee_role.title === answers.roleId);
-//       const managerId = selectManager().indexOf(answers.firstName);
-//       connection.query('INSERT INTO employee SET ?',
-//         {
-//           first_name: answers.firstName, // column: inquirer response
-//           last_name: answers.lastName,
-//           role_id: selectedRole.id,
-//           manager_id: managerId
-//         }, function (err, res) {
-//           if (err) throw err;
-//           console.log("Added new employee named " + answers.firstName + " " + answers.lastName + "\n");
-//           runSearch();
-//         })
-//     })
-//   })
-// }
-
 
 // //========== REMOVE EMPLOYEE ==========//
+
 function removeEmployee() {
   connection.query("SELECT * FROM employee", function (err, res) {
     if (err) throw err;
@@ -246,7 +204,6 @@ function removeEmployee() {
     });
   })
 };
-
 
 // //========== UPDATE EMPLOYEE ROLE ==========//
 // const updateEmployeeRole = () => {
