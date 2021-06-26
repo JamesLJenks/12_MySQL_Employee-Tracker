@@ -153,7 +153,7 @@ function addEmployee() {
               {
                 name: 'manager_id',
                 type: 'list',
-                message: 'Select the Manager for this employee.',
+                message: 'Select the manager for this employee.',
                 choices: results.map((item) => item.first_name),
               },
             ])
